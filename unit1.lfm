@@ -1,0 +1,280 @@
+object Form1: TForm1
+  Left = -8
+  Height = 366
+  Top = -8
+  Width = 812
+  BorderStyle = bsSingle
+  Caption = 'Advanced player'
+  ClientHeight = 366
+  ClientWidth = 812
+  Menu = MainMenu1
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  object DBCntrlGrid1: TDBCntrlGrid
+    Left = 5
+    Height = 319
+    Top = 5
+    Width = 802
+    Align = alClient
+    AltColorStartNormal = True
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    Color = clNone
+    DataSource = DataSource1
+    DefaultPositionAtEnd = False
+    DrawPanel = Panel1
+    FixedCols = 0
+    Flat = True
+    Options = [dgpIndicator]
+    TabOrder = 0
+    ColWidths = (
+      785
+    )
+    object Panel1: TPanel
+      Left = 1
+      Height = 47
+      Top = 9
+      Width = 777
+      ClientHeight = 47
+      ClientWidth = 777
+      TabOrder = 0
+      object Button1: TButton
+        AnchorSideLeft.Control = Button3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Panel1
+        AnchorSideRight.Control = Panel1
+        AnchorSideRight.Side = asrBottom
+        Cursor = crHandPoint
+        Left = 716
+        Height = 33
+        Top = 6
+        Width = 55
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 5
+        Caption = '>'
+        OnClick = Button1Click
+        TabOrder = 0
+      end
+      object Button2: TButton
+        AnchorSideTop.Control = Panel1
+        AnchorSideRight.Control = Button1
+        Cursor = crHandPoint
+        Left = 656
+        Height = 32
+        Top = 6
+        Width = 55
+        Anchors = [akTop, akRight]
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 5
+        Caption = '||'
+        OnClick = Button2Click
+        TabOrder = 1
+      end
+      object Button3: TButton
+        AnchorSideTop.Control = Panel1
+        AnchorSideRight.Control = Button2
+        Cursor = crHandPoint
+        Left = 596
+        Height = 33
+        Top = 6
+        Width = 55
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 5
+        Caption = '[]'
+        OnClick = Button3Click
+        TabOrder = 2
+      end
+      object DBMemo1: TDBMemo
+        AnchorSideLeft.Control = Panel1
+        AnchorSideTop.Control = Panel1
+        AnchorSideRight.Control = Button3
+        Left = 6
+        Height = 30
+        Top = 6
+        Width = 585
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 5
+        BorderSpacing.Bottom = 5
+        BorderStyle = bsNone
+        DataField = 'filepath'
+        DataSource = DataSource1
+        TabOrder = 3
+      end
+    end
+  end
+  object Panel2: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 5
+    Height = 32
+    Top = 329
+    Width = 802
+    Align = alBottom
+    BorderSpacing.Left = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    ClientHeight = 32
+    ClientWidth = 802
+    TabOrder = 1
+    object Label2: TLabel
+      AnchorSideTop.Control = Panel2
+      AnchorSideRight.Control = Panel2
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel2
+      AnchorSideBottom.Side = asrBottom
+      Left = 754
+      Height = 20
+      Top = 6
+      Width = 42
+      Anchors = [akTop, akRight, akBottom]
+      BorderSpacing.Left = 5
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 5
+      BorderSpacing.Bottom = 5
+      Caption = '00:00:00'
+      ParentColor = False
+    end
+    object TrackBar1: TTrackBar
+      AnchorSideLeft.Control = Label3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Panel2
+      AnchorSideRight.Control = Label2
+      AnchorSideBottom.Control = Panel2
+      AnchorSideBottom.Side = asrBottom
+      Left = 53
+      Height = 20
+      Top = 6
+      Width = 696
+      Position = 0
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Left = 5
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 5
+      BorderSpacing.Bottom = 5
+      OnClick = TrackBar1Click
+      TabOrder = 0
+    end
+    object Label3: TLabel
+      AnchorSideLeft.Control = Panel2
+      AnchorSideTop.Control = Panel2
+      AnchorSideBottom.Control = Panel2
+      AnchorSideBottom.Side = asrBottom
+      Left = 6
+      Height = 20
+      Top = 6
+      Width = 42
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Left = 5
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 5
+      BorderSpacing.Bottom = 5
+      Caption = '00:00:00'
+      ParentColor = False
+    end
+  end
+  object SQLite3Connection1: TSQLite3Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'files.db'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    AlwaysUseBigint = False
+    Left = 408
+    Top = 160
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = SQLite3Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 320
+    Top = 208
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLite3Connection1
+    Left = 368
+    Top = 104
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 416
+    Top = 104
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Mp3 Files|*.MP3|Wav files|*.Wav'
+    Options = [ofAllowMultiSelect, ofEnableSizing, ofViewDetail]
+    Left = 288
+    Top = 104
+  end
+  object MainMenu1: TMainMenu
+    Left = 328
+    Top = 152
+    object MenuItem1: TMenuItem
+      Caption = 'File'
+      object MenuItem2: TMenuItem
+        Caption = 'Open'
+        ShortCut = 32847
+        OnClick = MenuItem2Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Close'
+        ShortCut = 32835
+        OnClick = MenuItem3Click
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'About'
+      object MenuItem5: TMenuItem
+        Caption = 'About'
+        ShortCut = 32833
+        OnClick = MenuItem5Click
+      end
+    end
+  end
+  object SQLScript1: TSQLScript
+    DataBase = SQLite3Connection1
+    Transaction = SQLTransaction1
+    AutoCommit = False
+    UseDollarString = False
+    Directives.Strings = (
+      'SET TERM'
+      'COMMIT WORK'
+      'COMMIT RETAIN'
+      'COMMIT'
+      '#IFDEF'
+      '#IFNDEF'
+      '#ELSE'
+      '#ENDIF'
+      '#DEFINE'
+      '#UNDEF'
+      '#UNDEFINE'
+    )
+    Terminator = ';'
+    CommentsinSQL = True
+    UseSetTerm = True
+    UseCommit = True
+    UseDefines = True
+    Left = 280
+    Top = 160
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 8
+    Top = 8
+  end
+end
